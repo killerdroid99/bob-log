@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,regular,500,600,700);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Quicksand", Arial, Helvetica, sans-serif;
+}
+
+body {
+	@apply bg-black text-white;
+}
