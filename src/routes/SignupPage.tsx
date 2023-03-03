@@ -65,11 +65,11 @@ const SignupPage = () => {
   return (
     <main className="mx-auto max-w-3xl my-5 px-4">
       <form
-        className="rounded-xl bg-gray-500/20 grid gap-5 md:p-16 p-8"
+        className="rounded-xl bg-gray-500/20 grid grid-cols-2 gap-x-4 gap-y-8 md:p-16 p-8"
         onSubmit={handleSubmit}
       >
         <div className="grid gap-1 text-lg">
-          <label htmlFor="name">
+          <label className="text-sm" htmlFor="name">
             Name <small className=" ml-1 text-gray-400">(optional)</small>
           </label>
           <input
@@ -80,7 +80,9 @@ const SignupPage = () => {
           />
         </div>
         <div className="grid gap-1 text-lg">
-          <label htmlFor="email">Email</label>
+          <label className="text-sm" htmlFor="email">
+            Email
+          </label>
           <input
             id="email"
             type="email"
@@ -89,7 +91,9 @@ const SignupPage = () => {
           />
         </div>
         <div className="grid gap-1 text-lg relative">
-          <label htmlFor="password">Password</label>
+          <label className="text-sm" htmlFor="password">
+            Password
+          </label>
           <input
             id="password"
             ref={pwdRef}
@@ -99,8 +103,8 @@ const SignupPage = () => {
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            title={isPasswordVisible ? "Hide passord" : "Show password"}
-            className="absolute right-2 bottom-[6px] cursor-pointer rounded hover:bg-gray-600/40 transition-all ease-in p-1"
+            title={isPasswordVisible ? "Hide password" : "Show password"}
+            className="absolute right-2 bottom-[7px] cursor-pointer rounded hover:bg-gray-600/40 transition-all ease-in p-1"
           >
             {isPasswordVisible ? (
               <svg
@@ -109,7 +113,7 @@ const SignupPage = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -124,7 +128,7 @@ const SignupPage = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -141,7 +145,9 @@ const SignupPage = () => {
           </button>
         </div>
         <div className="grid gap-1 text-lg relative">
-          <label htmlFor="confirm">Confirm Password</label>
+          <label className="text-sm" htmlFor="confirm">
+            Confirm Password
+          </label>
           <input
             id="confirm"
             ref={confirmRef}
@@ -152,7 +158,7 @@ const SignupPage = () => {
             type="button"
             onClick={togglePasswordVisibility}
             title={isPasswordVisible ? "Hide password" : "Show password"}
-            className="absolute right-2 bottom-[6px] cursor-pointer rounded hover:bg-gray-600/40 transition-all ease-in p-1"
+            className="absolute right-2 bottom-[7px] cursor-pointer rounded hover:bg-gray-600/40 transition-all ease-in p-1"
           >
             {isPasswordVisible ? (
               <svg
@@ -161,7 +167,7 @@ const SignupPage = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -176,7 +182,7 @@ const SignupPage = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -192,7 +198,7 @@ const SignupPage = () => {
             )}
           </button>
         </div>
-        <div className="flex items-center gap-3 text-lg">
+        <div className="flex items-center gap-3 col-span-2">
           <input
             type="checkbox"
             id="login"
@@ -203,7 +209,7 @@ const SignupPage = () => {
           />
           <label htmlFor="login">Login Directly?</label>
         </div>
-        <button className="p-2 border-none outline-none bg-amber-500 hover:bg-amber-600 rounded font-bold text-xl transition-all ease-out focus-visible:ring-4 focus-visible:bg-transparent ring-amber-700 focus-visible:text-amber-700 active:scale-95">
+        <button className="p-2 border-none outline-none bg-amber-500 hover:bg-amber-600 rounded font-bold text-xl transition-all ease-out focus-visible:ring-4 focus-visible:bg-transparent ring-amber-700 focus-visible:text-amber-700 active:scale-95 col-span-2">
           Submit
         </button>
       </form>

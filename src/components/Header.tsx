@@ -1,8 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useScroll, motion } from "framer-motion"
 import { NavLink } from "react-router-dom"
 
 const Header = () => {
   const qc = useQueryClient()
+  const { scrollYProgress } = useScroll()
 
   const { data } = useQuery({
     queryKey: ["auth-status"],
@@ -43,7 +45,7 @@ const Header = () => {
   }
 
   return (
-    <header className="flex items-center justify-between md:py-8 lg:px-[18dvw] md:px-16 px-4 py-4 sticky top-0 bg-transparent backdrop-blur-md">
+    <header className="flex items-center justify-between md:py-8 lg:px-[18dvw] md:px-16 px-4 py-4 sticky top-0 bg-transparent backdrop-blur-md z-50 ">
       <NavLink to={"/"}>
         <h2 className="text-2xl font-bold group">
           <span className="text-sky-500 group-hover:text-white transition-colors ease">
@@ -89,6 +91,10 @@ const Header = () => {
           </>
         )}
       </nav>
+      <motion.div
+        style={{ opacity: scrollYProgress }}
+        className="bg-white/20 absolute w-full h-px bottom-0 left-0 overflow-hidden"
+      ></motion.div>
     </header>
   )
 }

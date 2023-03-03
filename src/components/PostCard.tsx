@@ -3,6 +3,7 @@ import { useRef } from "react"
 import { Link } from "react-router-dom"
 import InfoCard from "./InfoCard"
 import { format } from "date-fns"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface IProps {
   id: string
@@ -32,14 +33,25 @@ const PostCard = (props: IProps) => {
         {format(new Date(props.createdAt), "h a, dd MMM, yy")}
       </p>
 
-      {isHovering && (
-        <InfoCard
-          title={props.title}
-          body={props.body as string}
-          author={props.author.name}
-          time={format(new Date(props.createdAt), "h:mm a, E")}
-        />
-      )}
+      <AnimatePresence>
+        {isHovering && (
+          <motion.div
+            key="info"
+            className={`absolute top-[5%] left-[30%] bg-zinc-900 p-4 rounded-xl ring-1 ring-slate-800 transition-all ease-in z-10 shadow-sm shadow-slate-500 w-80`}
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.9 }}
+            // transition={{ type: "spring" }}
+          >
+            <InfoCard
+              title={props.title}
+              body={props.body as string}
+              author={props.author.name}
+              time={format(new Date(props.createdAt), "h:mm a, E")}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Link>
   )
 }

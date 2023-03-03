@@ -1,10 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
-import { Link } from "react-router-dom"
-import { format } from "date-fns"
-import { useHover } from "ahooks"
-import { useRef, useState } from "react"
-import InfoCard from "../components/InfoCard"
 import PostCard from "../components/PostCard"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface Post {
   id: string
@@ -39,27 +35,18 @@ const HomePage = () => {
   if (posts && posts.length > 0) {
     return (
       <main className="mx-auto max-w-3xl my-8 px-2 sm:px-4 grid gap-8">
-        {posts.map((post) => (
-          // <Link
-          //   ref={postCardRef}
-          //   key={post.id}
-          //   to={`/post/${post.id}`}
-          //   className="bg-gray-50/10 hover:bg-gray-300/20 outline-none border-none focus-visible:bg-gray-300/20 focus-visible:ring-1 p-4 rounded-sm flex justify-between items-center relative"
-          // >
-          //   <h3 className="text-xl font-bold text-purple-50">{post.title}</h3>
-          //   <time className="text-amber-50">
-          //     {format(new Date(post.createdAt), "h a, dd MMM, yy")}
-          //   </time>
-
-          //   <InfoCard
-          //     title={post.title}
-          //     body="sdjafjsdjf ksdaf"
-          //     author={post.author.name}
-          //     time={format(new Date(post.createdAt), "h:mm")}
-          //   />
-          // </Link>
-          <PostCard key={post.id} {...post} />
-        ))}
+        <AnimatePresence>
+          {posts.map((post) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <PostCard {...post} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </main>
     )
   } else if (isLoading) {
